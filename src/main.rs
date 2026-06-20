@@ -3,7 +3,7 @@ use scraper::{Html, Selector};
 use tokio::io::{self, AsyncBufReadExt, BufReader, AsyncWriteExt};
 
 
-async fn palantir() -> String {
+async fn gettin_input() -> String {
     let mut stdout = io::stdout();
     let _ = stdout.write_all(b"can you spare some url siir?  ").await;
     let _ = stdout.flush().await;
@@ -15,7 +15,7 @@ async fn palantir() -> String {
     reader
         .read_line(&mut id)
         .await
-        .expect("Couldn2t read it braj");
+        .expect("Can not read the INPUT BRAHHH");
 
     let mut input = id.trim().to_string();
     if !input.starts_with("http://") && !input.starts_with("https://") && !input.is_empty() {
@@ -41,7 +41,7 @@ async fn get_data_from_address(url: &str) -> Result<(), Box<dyn std::error::Erro
 }
 #[tokio::main]
 async fn main() -> io::Result<()> {
-    let url = palantir().await;
+    let url = gettin_input().await;
     
     if url.is_empty() {
         println!("invalid input");
